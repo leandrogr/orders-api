@@ -29,6 +29,15 @@ export class OrdersService {
     }
   }
 
+  async findByOrderId(id) {
+    return await this.ordersRepository.find({
+      where: { order_id: id },
+      order: {
+        createdAt: 'DESC',
+      },
+    });
+  }
+
   async store(data: CreateOrderDto) {
     const user = this.ordersRepository.create(data);
     return await this.ordersRepository.save(user);

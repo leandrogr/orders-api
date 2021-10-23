@@ -28,9 +28,14 @@ export class OrdersController {
     return await this.ordersService.store(body);
   }
 
+  // @Get(':id')
+  // async show(@Param('id') id: number) {
+  //   return await this.ordersService.findOneOrFail({ id });
+  // }
+
   @Get(':id')
-  async show(@Param('id') id: number) {
-    return await this.ordersService.findOneOrFail({ id });
+  async findByOrderId(@Param('id') id: string) {
+    return await this.ordersService.findByOrderId(id);
   }
 
   @Put(':id')
